@@ -8,7 +8,6 @@ from rich.progress import track
 from rich import print
 from art import tprint
 from rich.console import Console
-from reportlab.pdfgen import canvas
 from os import listdir, mkdir, path
 
 
@@ -24,7 +23,7 @@ def init(file, output, ptt):
         try:
             with open(file, 'r', encoding='utf-8') as f:
                 text = f.read()
-                print(f'\n\nФайл для анализа: {file}')
+                print(f'\n\nФайл для анализа: {path.basename(file)}')
                 with console.status("[bold green]Загрузка модели bart-large-mnli..."):
                     classif = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
                     console.log('[bold][green]Используется модель bart-large-mnli!')
@@ -32,7 +31,7 @@ def init(file, output, ptt):
                 labels, scores = classifier(text,classif)
                 freq, polarity, subjectivity, unique, all_words = counter(text,token_word)
                 print (f'Основной жанр: {labels[0]}\nВторостепенные жанры: {labels[1]}, {labels[2]}')
-                report(output,labels, scores,freq, polarity, subjectivity, unique, all_words,enty)
+                report(output,labels, scores,freq, polarity, subjectivity, unique, all_words, path.basename(file))
         except:
             print('[bold][red]Ошибка! Файл не найден/выбран или неверный формат файла!')
     else:
