@@ -33,7 +33,7 @@ def init(file, output, ptt):
                 print (f'Основной жанр: {labels[0]}\nВторостепенные жанры: {labels[1]}, {labels[2]}')
                 report(output,labels, scores,freq, polarity, subjectivity, unique, all_words, path.basename(file))
         except:
-            print('[bold][red]Ошибка! Файл не найден/выбран или неверный формат файла!')
+            print('[bold][red]Ошибка! Файл не найден или выбран неверный формат файла!')
     else:
         try:
             for count, enty in enumerate(listdir(f'{ptt}/')):
@@ -108,13 +108,13 @@ def counter(text,token):
     text = TextBlob(str(token))
     polarity = round(text.sentiment.polarity,3)
     if polarity > 0:
-        print(f'Положительный с значением {polarity}')
+        print(f'Положительный со значением {polarity}')
     elif polarity < 0:
-        print(f'Отрицательный с значением {polarity}')
+        print(f'Отрицательный со значением {polarity}')
     else:
-        print(f'Нейтральный с значением {polarity}')
+        print(f'Нейтральный со значением {polarity}')
     subjectivity = round(text.sentiment.subjectivity,3)
-    print(f'Субъективность с значением {subjectivity}')
+    print(f'Субъективность со значением {subjectivity}')
     return freq, polarity, subjectivity, len(unique), len(words)
 
 
@@ -126,7 +126,7 @@ def report(output,labels, scores,freq, polarity, subjectivity, unique, all_words
         with open(f'{output}/{enty}_report.md', 'w', encoding='utf-8') as f:
             f.write(f'Всего слов в тексте: {all_words}\nИз них уникальных: {unique}\n\
             Топ 10 слов на основе частотного анализа: {freq}\n\
-            Положительный с значением {polarity}\nСубъективность с значением {subjectivity}\n\
+            Положительный со значением {polarity}\nСубъективность со значением {subjectivity}\n\
             Топ 3 жанра: {labels[0]}, {labels[1]}, {labels[2]}\n\
             Резултаты классификации:')
         f.close()
@@ -136,7 +136,7 @@ def report(output,labels, scores,freq, polarity, subjectivity, unique, all_words
     else:
         mkdir(f'{output}')
         with open(f'{output}/{enty}_report.txt', 'w', encoding='utf-8') as f:
-            f.write(f'Всего слов в тексте: {all_words}\nИз них уникальных: {unique}\nТоп 10 слов на основе частотного анализа: {freq}\nПоложительный с значением {polarity}\nСубъективность с значением {subjectivity}\nТоп 3 жанра: {labels[0]}, {labels[1]}, {labels[2]}\nЖанры в убывающем порядке:{labels}\nЗначения жанров: {scores}')
+            f.write(f'Всего слов в тексте: {all_words}\nИз них уникальных: {unique}\nТоп 10 слов на основе частотного анализа: {freq}\nПоложительный со значением {polarity}\nСубъективность со значением {subjectivity}\nТоп 3 жанра: {labels[0]}, {labels[1]}, {labels[2]}\nЖанры в убывающем порядке:{labels}\nЗначения жанров: {scores}')
         f.close()
         plt.pie(scores[:3], labels=labels[:3], autopct='%1.1f%%')
         plt.title('Результаты классификации')
