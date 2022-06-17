@@ -128,7 +128,7 @@ def report(output,labels, scores,freq, polarity, subjectivity, unique, all_words
             Топ 10 слов на основе частотного анализа: {freq}\n\
             Положительный со значением {polarity}\nСубъективность со значением {subjectivity}\n\
             Топ 3 жанра: {labels[0]}, {labels[1]}, {labels[2]}\n\
-            Резултаты классификации:')
+            Результаты классификации:')
         f.close()
         plt.pie(scores[:3], labels=labels[:3], autopct='%1.1f%%')
         plt.title('Результаты классификации')
