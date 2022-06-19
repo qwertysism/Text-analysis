@@ -1,7 +1,7 @@
 # TextIT
 *Automatic analysis system for fiction in English*
 
-[Google Collab](https://colab.research.google.com/drive/1-J7A-MlO2w-5lWGzOhFlpznkS2_f1vJs?usp=sharing)
+[Google Colab](https://colab.research.google.com/drive/1-J7A-MlO2w-5lWGzOhFlpznkS2_f1vJs?usp=sharing)
 ## Introduction
 In recent decades, many automatic text processing systems have appeared. Mostly such systems are created to work with posts from social networks, comments and reviews. While there are practically no, at least in the public domain, models adapted to work with literary texts.
 
